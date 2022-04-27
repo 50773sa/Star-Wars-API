@@ -34,6 +34,7 @@ function AllPeoplePage() {
     return (
         <div className='allPeople'>
             <AllPeopleList people={peoplePage}/>
+            <p>hejsan</p>
         </div>
     )
 }
