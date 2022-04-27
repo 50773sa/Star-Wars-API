@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
 import AllFilmsPage from './pages/AllFilmsPage'
@@ -17,7 +17,8 @@ function App() {
   return (
     <div id="App">
 		<Navigation />
-		<Container>
+		<Container className='main-wrapper'>
+			<div className="box">
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/films" element={<AllFilmsPage />} />
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/people" element={<AllPeoplePage />} />
                 <Route path="/people/:id" element={<SinglePersonPage />} />				
 			</Routes>
+			</div>
 		</Container>  
     </div>
   );
