@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import { Button, Card, Container, ListGroup} from "react-bootstrap"
 import { getIdFromUrl } from '../helpers'
-import { Container } from "react-bootstrap"
-import { Button, Card, ListGroup} from "react-bootstrap"
 
 // styles
 import '../App.css'
@@ -10,8 +9,6 @@ import '../App.css'
 
 function SingleFilm({ film }) {
     const navigate = useNavigate()
-
-   console.log('FILM CHARACTER', film.characters)
 
 
     return (
@@ -32,18 +29,25 @@ function SingleFilm({ film }) {
                         <ListGroup.Item><strong>Characters</strong></ListGroup.Item> 
 
                         {/* Links to characters */}
-                        {film .characters && 
+                        {film.characters && (
                             film.characters.map((character, id) => {
                                 return (
-                                    <ListGroup.Item key={id} value={film} as={Link} to={`/people/${id}`}>Character {`${getIdFromUrl(film)}`} ≫</ListGroup.Item>    
-                                    )
-                        })} 
-                          
+                                        <ListGroup.Item 
+                                            key={id} 
+                                            value={character} 
+                                            as={Link} 
+                                            to={`/people/${id+1}`}
+                                            > Character {`${getIdFromUrl(character)}`} ≫
+                                        </ListGroup.Item>    
+                                )
+                            })
+                        )} 
                     </ListGroup>
                   
                     <div className="m-3">
-                        <Button variant="warning" size="sm" onClick={() => navigate(-1)}>≪ Back</Button>   
+                        <Button variant="dark" onClick={() => navigate(-1)}>≪ Back</Button>   
                     </div>   
+
                 </Card>    
             </Container>
         </>
