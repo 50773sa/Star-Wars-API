@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { getIdFromUrl } from '../helpers'
 import { Container } from "react-bootstrap"
 import { Button, Card, ListGroup} from "react-bootstrap"
@@ -35,10 +35,8 @@ function SingleFilm({ film }) {
                         {film .characters && 
                             film.characters.map((character, id) => {
                                 return (
-                                    <a href='{character}' key={id} value={film} to={`/people/${character.id}`} >
-                                        <ListGroup.Item>Character {`${getIdFromUrl(character)}`} </ListGroup.Item>    
-                                    </a> 
-                            )
+                                    <ListGroup.Item key={id} value={film} as={Link} to={`/people/${id}`}>Character {`${getIdFromUrl(film)}`} ≫</ListGroup.Item>    
+                                    )
                         })} 
                           
                     </ListGroup>
