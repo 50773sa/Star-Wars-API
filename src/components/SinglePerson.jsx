@@ -1,22 +1,19 @@
-import React, { useEffect } from 'react'
-import { Container } from "react-bootstrap"
-import { ListGroup, Card, Button } from "react-bootstrap"
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Container, Card, ListGroup, Button } from "react-bootstrap"
 import { getIdFromUrl} from "../helpers"
-import { Link, NavLink, useParams, useNavigate } from 'react-router-dom'
 
 // styles
 import '../App.css'
 
-function SinglePerson({ person, film }) {
-    const navigate = useNavigate()
-    const { id } = useParams()
 
-  
-console.log('FILM:', film)
+function SinglePerson({ person }) {
+    const navigate = useNavigate()
+
     return (
         <>
             <Container>
-        
+                {/* show info about character */}
                 <Card style={{ width: '50rem'}}  >
                     <ListGroup variant="flush">
                         <Card.Header>{person.name}</Card.Header>
@@ -32,14 +29,20 @@ console.log('FILM:', film)
                         <ListGroup.Item><strong>Films </strong></ListGroup.Item>
 
                             {/* Links to films */}
-                            {person.films && 
+                            {person.films && (
                                 person.films.map((person, id) => {
                                     return (
-                                            <ListGroup.Item key={id} value={person} as={Link} to={`/films/${id}`}>Films {`${getIdFromUrl(person)}`} ≫</ListGroup.Item>    
-                                )
-                            })} 
+                                        <ListGroup.Item 
+                                            key={id} 
+                                            value={person} 
+                                            as={Link} 
+                                            to={`/films/${id+1}`}
+                                            > Films {`${getIdFromUrl(person)}`} ≫
+                                        </ListGroup.Item>    
+                                    )
+                                })
+                            )} 
                         </ListGroup>
-
 
                     <div className="m-3">
                         <Button variant="warning" size="sm" onClick={() => navigate(-1)}>≪ Back</Button>   
