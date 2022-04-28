@@ -12,10 +12,7 @@ import '../App.css'
 
 function AllFilmsPage() {
   	const [films, setFilms] = useState([])
-	const [page, setPage] = useState('')
-
 	const navigate = useNavigate()
-
 
  	const getFilms = async () => {
 		// get films from StarWarsAPI
@@ -34,19 +31,15 @@ function AllFilmsPage() {
 		<div className='allFilms'>
             <AllFilmsList films={films}/>
 			
-			<div className="d-flex justify-content-between align-items-center mt-3">
-				<div className="col-3">
-					<Button variant="warning" size="sm" onClick={() => navigate(-1)}>Previos Page</Button>   
+			{/* <div className="nav-buttons-wrapper">
+				<div className="nav-button">
+					<Button variant="light" size="sm" onClick={() => navigate(-1)}>Previos Page</Button>   
 				</div>
 
-				<div>
-					<p>Page {1}/{1}</p>
+				<div className="nav-button">
+					<Button variant="light" size="sm" onClick={() => navigate(+1)}>Next Page</Button>   
 				</div>
-
-				<div className="col-3">
-					<Button variant="warning" size="sm" onClick={() => navigate(+1)}>Next Page</Button>   
-				</div>
-            </div>
+            </div> */}
 		</div>
 	)
 }

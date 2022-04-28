@@ -1,11 +1,8 @@
 import React from 'react'
-import { Container } from "react-bootstrap"
-import { ListGroup, Card, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import StarWarsAPI from "../services/StarWarsAPI"
 import { getIdFromUrl } from '../helpers'
-
-import index from '../helpers'
+import { Container } from "react-bootstrap"
+import { Button, Card, ListGroup} from "react-bootstrap"
 
 // styles
 import '../App.css'
@@ -39,7 +36,7 @@ function SingleFilm({ film }) {
                             film.characters.map((character, id) => {
                                 return (
                                     <a href='{character}' key={id} value={film} to={`/people/${character.id}`} >
-                                        <ListGroup.Item>Character {id} </ListGroup.Item>    
+                                        <ListGroup.Item>Character {`${getIdFromUrl(character)}`} </ListGroup.Item>    
                                     </a> 
                             )
                         })} 

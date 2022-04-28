@@ -2,13 +2,14 @@ import { Container } from "react-bootstrap"
 import { ListGroup, Card, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
+
+import Pagination from "./Pagination"
+
 import '../App.css'
 
 function AllPeopleList({ people }) {
     const navigate = useNavigate()
-
-    console.log(people)
-
+        
     return (
         <>
             <h2>People</h2>
@@ -24,7 +25,7 @@ function AllPeopleList({ people }) {
                                 <ListGroup.Item><strong>In </strong>{person.films.length} films</ListGroup.Item>
 
                                 <div className="m-3">
-                                    <Button variant="warning" size="sm" as={Link} to={`/people/${id+1}`}>Read More</Button>   
+                                    <Button variant="dark" size="sm" as={Link} to={`/people/${id+1}`}>Read More</Button>   
                                 </div>
                             </ListGroup>                            
                         </Card> 
@@ -32,7 +33,7 @@ function AllPeopleList({ people }) {
                 })}
             </Container> 
 
-            <div className="d-flex justify-content-between align-items-center mt-4">
+            {/* <div className="d-flex justify-content-between align-items-center mt-4">
                         <div className="col-3">
                             <Button variant="warning" size="sm" onClick={() => navigate(-1)} disabled={!people.length}>Previos Page</Button>   
                          </div>
@@ -44,7 +45,7 @@ function AllPeopleList({ people }) {
                         <div className="col-3">
                             <Button variant="warning" size="sm" onClick={() => navigate(+1)} disabled={!people.length} >Next Page</Button>   
                         </div>
-                    </div>
+                    </div> */}
         </>
     )
 }

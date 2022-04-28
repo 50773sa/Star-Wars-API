@@ -4,7 +4,7 @@ import { ListGroup, Card, Button } from "react-bootstrap"
 import { getIdFromUrl} from "../helpers"
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 
-
+// styles
 import '../App.css'
 
 function SinglePerson({ person, id }) {
@@ -31,7 +31,15 @@ function SinglePerson({ person, id }) {
                         <ListGroup.Item><strong>Films </strong>{person.films}</ListGroup.Item>
                     </ListGroup>
 
-                
+                          {/* Links to films */}
+                          {person.films && 
+                            person.films.map((person, id) => {
+                                return (
+                                    <a href='{person}' key={id} value={person} to={`/people/${person.id}`} >
+                                        <ListGroup.Item>Films {`${getIdFromUrl(person)}`} </ListGroup.Item>    
+                                    </a> 
+                            )
+                        })} 
 
                     <div className="m-3">
                         <Button variant="warning" size="sm" onClick={() => navigate(-1)}>≪ Back</Button>   

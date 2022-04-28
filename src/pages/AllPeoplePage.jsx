@@ -1,13 +1,15 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import AllPeopleList from '../components/AllPeopleList'
+import Pagination from '../components/Pagination'
 import StarWarsAPI from "../services/StarWarsAPI"
 
+import '../App.css'
 
 function AllPeoplePage() {
     const [people, setPeople] = useState([])
     const [currentPage, setCurrentPage] = useState(1)   
-    const [peoplePerPage, setPeoplePerPage] = useState(9) 
+    const [peoplePerPage] = useState(9) 
     const [loading, setLoading] = useState(false)
 
  	const getPeople = async () => {
@@ -19,22 +21,25 @@ function AllPeoplePage() {
 
     // get people from api when component i mounted 
     useEffect(() => {
-        // setLoading(true)
-        getPeople()
-        // setLoading(false)
-    }, []) 
+        getPeople(currentPage)
+    }, [currentPage]) 
 
-    // number of people per page
-    const indexOfLastPerson = currentPage * peoplePerPage
-    const indexOfFirstPerson = indexOfLastPerson - peoplePerPage
-    const peoplePage = people.slice(indexOfFirstPerson, indexOfLastPerson)
-    
-    console.log('PEOPLE', peoplePage)
+     // number of cards per page
+     const indexOfLastPerson = currentPage * peoplePerPage
+     const indexOfFirstPerson = indexOfLastPerson - peoplePerPage
+     const peopleOnDisplay = people.slice(indexOfFirstPerson, indexOfLastPerson)
+
+     const paginate = pageNumber => setCurrentPage(pageNumber)
+ 
+    console.log('PEOPLE', peopleOnDisplay)
+    console.log(currentPage)
 	 
     return (
+        
         <div className='allPeople'>
-            <AllPeopleList people={peoplePage}/>
-            <p>hejsan</p>
+            <AllPeopleList people={peopleOnDisplay}/>
+            <Pagination peoplePerPage={peoplePerPage} people={people.length} paginate={paginate} />
+
         </div>
     )
 }

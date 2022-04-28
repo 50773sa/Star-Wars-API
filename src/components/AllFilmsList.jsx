@@ -20,7 +20,7 @@ function AllFilmsList({ films }) {
                                 <ListGroup.Item>{film.characters.length}<strong> Characters</strong></ListGroup.Item>
 
                                 <div className="m-3">
-                                    <Button variant="warning" size="sm" as={Link} to={`/films/${id+1}`}>
+                                    <Button variant="dark" size="sm" as={Link} to={`/films/${id+1}`}>
                                         Read More
                                     </Button>   
                                 </div>
