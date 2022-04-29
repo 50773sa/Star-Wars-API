@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import SingleFilm from '../components/SingleFilm'
+import LoadingSpinner from '../components/LoadingSpinner'
 import StarWarsAPI from "../services/StarWarsAPI"
 
 
@@ -46,7 +47,7 @@ function SingleFilmPage() {
     return (
         <div className='singleFilm'>
 
-            {isLoading && (<p>Loading...</p>)}
+            {isLoading && (<LoadingSpinner />)}
 			{isError && (<p><strong>ERROR!</strong> Sorry, an error has occured: {error.message}</p>)}
 
             {film && !isLoading && (

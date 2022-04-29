@@ -2,10 +2,10 @@ import React from 'react'
 
 function LoadingSpinner() {
   return (
-    <div class="trinity-rings-spinner">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
+    <div className="trinity-rings-spinner">
+        <div className="circle"></div>
+        <div className="circle"></div>
+        <div className="circle"></div>
     </div>
   )
 }

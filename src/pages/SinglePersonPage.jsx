@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import StarWarsAPI from "../services/StarWarsAPI"
 import SinglePerson from '../components/SinglePerson'
+import LoadingSpinner from '../components/LoadingSpinner'
+import StarWarsAPI from "../services/StarWarsAPI"
 
 function SinglePersonPage() {
     const [person, setPerson] = useState([])
@@ -26,16 +27,15 @@ function SinglePersonPage() {
             // reset any previos error
             setIsError(false)
             setError(null)
+
         } catch (err) {
             setIsError(false)
             setError(err)
+
         } finally {
             setIsLoading(false)
-        }
-
-		
+        }	
  	}
-     console.log('PERSON', person)
 
     // get person from api when component i mounted 
     useEffect(() => {
@@ -44,7 +44,7 @@ function SinglePersonPage() {
     
     return (
         <div>
-            {isLoading && (<p>Loading...</p>)}
+            {isLoading && (<LoadingSpinner />)}
 			{isError && (<p><strong>ERROR!</strong> Sorry, an error has occured: {error.message}</p>)}
 
             {person && !isLoading && (
