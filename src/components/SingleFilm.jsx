@@ -37,7 +37,8 @@ function SingleFilm({ film }) {
                                             value={character} 
                                             as={Link} 
                                             to={`/people/${id+1}`}
-                                            > Character {`${getIdFromUrl(character)}`} ≫
+                                        > 
+                                            Character {`${getIdFromUrl(character)}`} ≫
                                         </ListGroup.Item>    
                                 )
                             })

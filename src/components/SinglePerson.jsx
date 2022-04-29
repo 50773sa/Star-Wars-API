@@ -37,7 +37,8 @@ function SinglePerson({ person }) {
                                             value={person} 
                                             as={Link} 
                                             to={`/films/${id+1}`}
-                                            > Films {`${getIdFromUrl(person)}`} ≫
+                                        > 
+                                            Films {`${getIdFromUrl(person)}`} ≫
                                         </ListGroup.Item>    
                                     )
                                 })
@@ -45,7 +46,7 @@ function SinglePerson({ person }) {
                         </ListGroup>
 
                     <div className="m-3">
-                        <Button variant="warning" size="sm" onClick={() => navigate(-1)}>≪ Back</Button>   
+                        <Button variant="dark" onClick={() => navigate(-1)}>≪ Back</Button>   
                     </div>
                 </Card>  
 
