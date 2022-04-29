@@ -7,6 +7,7 @@ import AllFilmsPage from './pages/AllFilmsPage'
 import SingleFilmPage from './pages/SingleFilmPage'
 import AllPeoplePage from './pages/AllPeoplePage'
 import SinglePersonPage from './pages/SinglePersonPage'
+import PageNotFound from './pages/PageNotFound'
 
 // styles
 import 'bootstrap/dist/css/bootstrap.css'
@@ -19,12 +20,14 @@ function App() {
 		<Navigation />
 		<Container className='main-wrapper'>
 			<div className="box">
+
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/films" element={<AllFilmsPage />} />
 				<Route path="/films/:id" element={<SingleFilmPage />} />
                 <Route path="/people" element={<AllPeoplePage />} />
                 <Route path="/people/:id" element={<SinglePersonPage />} />				
+                <Route path="*" element={<PageNotFound />} />				
 			</Routes>
 			</div>
 		</Container>  
