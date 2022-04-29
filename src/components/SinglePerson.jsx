@@ -12,7 +12,7 @@ function SinglePerson({ person }) {
 
     return (
         <>
-            <Container>
+            <Container className="cardsContainer">
                 {/* show info about character */}
                 <Card style={{ width: '50rem'}}  >
                     <ListGroup variant="flush">

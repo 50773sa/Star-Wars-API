@@ -13,7 +13,7 @@ function SingleFilm({ film }) {
 
     return (
         <>
-            <Container>
+            <Container className="cardsContainer">
              
                 <Card style={{ width: '50rem'}}>
                     <ListGroup variant="flush">

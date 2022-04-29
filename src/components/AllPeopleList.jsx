@@ -14,7 +14,7 @@ function AllPeopleList({ people }) {
         <>
             <h2>People</h2>
 
-            <Container>
+            <Container className="cardsContainer"> 
                 {people.map((person, id) => {
                     return (
                         <Card style={{ width: '18rem' }} key={id} value={person} className="row-3 col-3" >
