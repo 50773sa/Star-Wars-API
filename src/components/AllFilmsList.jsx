@@ -9,7 +9,7 @@ function AllFilmsList({ films }) {
         <>
             <h2>Films</h2>
 
-            <Container>
+            <Container className="cardsContainer">
                 {films.map((film, id) => {
                     return (
                         <Card style={{ width: '18rem' }} key={id} value={film}>
