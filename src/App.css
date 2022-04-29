@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-image: url('./img/star-wars-wallpaper.jpg');
 }
@@ -14,20 +18,15 @@ h1, h2 {
   margin: 0 auto;
 }
 
-.main-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 /* star wars background */
 .wallpaperWrapper {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 .wallpaper {
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -36,6 +35,9 @@ h1, h2 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+.cardsContainer {
+  margin: 2rem;
 }
 
 img {
@@ -48,10 +50,8 @@ img {
   justify-content: center;
   align-items: center;
   width: 90vw;
-  height: 90vh;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  position: relative;
   background-color: rgba(0, 0, 0, 0.496);
   border-radius: 10px;
   box-shadow: 0 0 1px 1px rgba(242, 255, 0, 0),
@@ -65,26 +65,38 @@ img {
 .homepageBtnsWrapper {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  height: 90vh;
 }
 
 .homepageBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 400px;
   height: 200px;
   margin: 2rem;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.508);
   border-radius: 10px;
   box-shadow: 0 0 1px 1px rgba(242, 255, 0, 0),
               0 0 2px 2px rgba(225, 255, 0, 0.127),
               0 0 4px 4px rgba(225, 255, 0, 0.077),
               0 0 6px 6px rgba(225, 255, 0, 0.046),
               0 0 10px 10px rgba(221, 255, 0, 0.135),
-              0 0 20px 20px rgba(255, 251, 0, 0.144);   
+              0 0 20px 20px rgba(255, 254, 199, 0.144);   
 
+}
+
+.homepageBtns h2 {
+  margin: 0 !important;
+  text-shadow: 4px 4px 5px red;
+  cursor: pointer;
+}
+
+.homepageBtns a {
+  text-decoration: none !important;
 }
 
 
@@ -110,10 +122,6 @@ img {
 
 
 /* loading spinner */
-.trinity-rings-spinner, .trinity-rings-spinner * {
-    box-sizing: border-box;
-  }
-
   .trinity-rings-spinner {
     height: 90vh;
     width: 90vh;
