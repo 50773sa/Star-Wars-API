@@ -19,7 +19,7 @@ const getAllFilms = async () => {
  * Get a single film
  */
 
- const getSingleFilm = async (id) => {
+const getSingleFilm = async (id) => {
     const res = await axios.get(`${BASE_URL}/films/${id}`)
     return res.data   
 } 
@@ -28,10 +28,10 @@ const getAllFilms = async () => {
  *  Get People
  */
 
- const getAllPeople = async () => {
-    const res = await axios.get(`${BASE_URL}/people`)
-    return res.data.results
-}
+ const getAllPeople = async (page) => {
+    const res = await axios.get(`${BASE_URL}/people/?page=${page}`)
+    return res.data
+} 
 
 /**
  * Get a single person
