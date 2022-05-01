@@ -13,31 +13,34 @@ function AllPeoplePage() {
     const [error, setError] = useState(null)
     const [isError, setIsError] = useState(false)
 
- 	const getPeople = async () => {
-        setIsLoading(true)
-
-        try {
-            // get people from StarWarsAPI
-            const data = await StarWarsAPI.getAllPeople(page)
-
-            // fake slow api
-            await new Promise(r => setTimeout(r, 1500))
-
-            // update people state
-            setPeople(data)
-
-        } catch (err) {
-            setIsError(false)
-            setError(err)
-
-        } finally {
-            setIsLoading(false)
-        }	
- 	}
 
     // get people from api when component i mounted 
     useEffect(() => {
+        setIsLoading(true)
+
+ 	    const getPeople = async () => {
+
+            try {
+                // get people from StarWarsAPI
+                const data = await StarWarsAPI.getAllPeople(page)
+
+                // fake slow api
+                await new Promise(r => setTimeout(r, 1500))
+
+                // update people state
+                setPeople(data)
+
+            } catch (err) {
+                setIsError(false)
+                setError(err)
+
+            } finally {
+                setIsLoading(false)
+            }	
+ 	    }
+
         getPeople(page)
+        
     }, [page]) 
 
  
@@ -58,6 +61,7 @@ function AllPeoplePage() {
                             variant="dark"
                             onClick={() => setPage(value => value -1)}
                             disabled={!people.previous}
+                            page={page}
                         >
                             Previous
                         </Button>
@@ -68,6 +72,7 @@ function AllPeoplePage() {
                             variant="dark"
                             onClick={() => setPage(value => value +1)}
                             disabled={!people.next}
+                            page={page}
                         >
                             Next
                         </Button>

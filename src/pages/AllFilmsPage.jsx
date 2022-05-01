@@ -14,31 +14,32 @@ function AllFilmsPage() {
 	const [page, setPage] = useState(1)   
 
 
- 	const getFilms = async () => {
-		setIsLoading(true)
-
-		try {
-			// get films from StarWarsAPI
-			const data = await StarWarsAPI.getAllFilms(page)
-
-			// fake slow api
-			await new Promise(r => setTimeout(r, 1500))
-
-			// update films state
-			setFilms(data)
-
-		} catch (err) {
-            setIsError(false)
-            setError(err)
-
-        } finally {
-            setIsLoading(false)
-        }	
- 	}
-
     // get films from api when component i mounted 
     useEffect(() => {
+        const getFilms = async () => {
+            setIsLoading(true)
+
+            try {
+                // get films from StarWarsAPI
+                const data = await StarWarsAPI.getAllFilms(page)
+
+                // fake slow api
+                await new Promise(r => setTimeout(r, 1500))
+
+                // update films state
+                setFilms(data)
+
+            } catch (err) {
+                setIsError(false)
+                setError(err)
+
+            } finally {
+                setIsLoading(false)
+            }	
+ 	    }
+
         getFilms(page)
+        
     }, [page]) 
 
 
@@ -59,6 +60,7 @@ function AllFilmsPage() {
                             variant="dark"
                             onClick={() => setPage(value => value -1)}
                             disabled={!films.previous}
+                            page={page}
                         >
                             Previous
                         </Button>
@@ -69,6 +71,7 @@ function AllFilmsPage() {
                             variant="dark"
                             onClick={() => setPage(value => value +1)}
                             disabled={!films.next}
+                            page={page}
                         >
                             Next
                         </Button>
