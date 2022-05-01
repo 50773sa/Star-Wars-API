@@ -10,9 +10,9 @@ const BASE_URL = 'https://swapi.dev/api'
  *  Get Films
  */
 
-const getAllFilms = async () => {
-    const res = await axios.get(`${BASE_URL}/films`)
-    return res.data.results
+const getAllFilms = async (page) => {
+    const res = await axios.get(`${BASE_URL}/films/?page=${page}`)
+    return res.data
 }
 
 /**
@@ -42,8 +42,7 @@ const getSingleFilm = async (id) => {
     return res.data
 }
 
-
-
+// eslint-disable-next-line 
 export default {
     getAllFilms,
     getSingleFilm,
