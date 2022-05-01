@@ -1,29 +1,25 @@
 import { useEffect, useState } from 'react'
 import AllFilmsList from '../components/AllFilmsList'
-import { useNavigate } from 'react-router-dom'
 import LoadingSpinner from '../components/LoadingSpinner'
 import StarWarsAPI from "../services/StarWarsAPI"
-
-
-
-import { Button } from 'react-bootstrap'
-import '../App.css'
+import { Button, Container } from 'react-bootstrap'
 
 
 
 function AllFilmsPage() {
   	const [films, setFilms] = useState([])
-	const navigate = useNavigate()
 	const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [isError, setIsError] = useState(false)
+	const [page, setPage] = useState(1)   
+
 
  	const getFilms = async () => {
 		setIsLoading(true)
 
 		try {
 			// get films from StarWarsAPI
-			const data = await StarWarsAPI.getAllFilms()
+			const data = await StarWarsAPI.getAllFilms(page)
 
 			// fake slow api
 			await new Promise(r => setTimeout(r, 1500))
@@ -42,8 +38,8 @@ function AllFilmsPage() {
 
     // get films from api when component i mounted 
     useEffect(() => {
-        getFilms()
-    }, []) 
+        getFilms(page)
+    }, [page]) 
 
 
 	return (
@@ -55,15 +51,30 @@ function AllFilmsPage() {
             {films && !isLoading && (
             	<AllFilmsList films={films}/>
 			)}  
-			{/* <div className="nav-buttons-wrapper">
-				<div className="nav-button">
-					<Button variant="light" size="sm" onClick={() => navigate(-1)}>Previos Page</Button>   
-				</div>
-
-				<div className="nav-button">
-					<Button variant="light" size="sm" onClick={() => navigate(+1)}>Next Page</Button>   
-				</div>
-            </div> */}
+			
+			{page && (
+                <Container className='pageBtns'>
+                    <div className="previouBtn">
+                        <Button
+                            variant="dark"
+                            onClick={() => setPage(value => value -1)}
+                            disabled={!films.previous}
+                        >
+                            Previous
+                        </Button>
+                    </div>
+       
+                    <div className="nextBtn">
+                        <Button
+                            variant="dark"
+                            onClick={() => setPage(value => value +1)}
+                            disabled={!films.next}
+                        >
+                            Next
+                        </Button>
+                    </div>
+                </Container>
+            )}
 		</div>
 	)
 }
