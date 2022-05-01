@@ -18,7 +18,17 @@ h1, h2 {
   margin: 0 auto;
 }
 
-/* star wars background */
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* =========================================
+  Star Wars background
+========================================= */
+
 .wallpaperWrapper {
   display: flex;
   width: 100%;
@@ -30,21 +40,10 @@ h1, h2 {
   overflow: hidden;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.cardsContainer {
-  margin: 2rem;
-}
+/* =========================================
+    See-through background box
+========================================= */
 
-img {
-  height: 100%;
-}
-
-/* background box */
 .box {
   display: flex;
   justify-content: center;
@@ -61,6 +60,10 @@ img {
               0 0 10px 10px rgba(221, 255, 0, 0.135),
               0 0 20px 20px rgba(255, 251, 0, 0.144);    
 }
+
+/* =========================================
+    Homepage
+========================================= */
 
 .homepageBtnsWrapper {
   display: flex;
@@ -99,8 +102,14 @@ img {
   text-decoration: none !important;
 }
 
+/* =========================================
+  Cards
+========================================= */
 
-/*  cards */
+.cardsContainer {
+  margin: 2rem;
+}
+
 .card {
     margin: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
@@ -112,16 +121,34 @@ img {
     color: #fff;
 }
 
+/* =========================================
+  Pagination
+========================================= */
 
-/* pagination */
-.pagination{
+.pageBtns{
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
+.pageBtns button {
+  margin: 2rem;
+}
 
-/* loading spinner */
+.pageNumber {
+  display: flex;
+  align-items: center;  
+  color: #fff;
+}
+
+.pageNumber p {
+  margin: 0;
+}
+
+/* =========================================
+  Loading spinner
+========================================= */
+
   .trinity-rings-spinner {
     height: 90vh;
     width: 90vh;
