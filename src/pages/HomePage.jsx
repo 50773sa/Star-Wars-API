@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom"
 
-const HomePage = ({ films }) => {
+const HomePage = () => {
 
 	console.log(Link)
 	return (
 		<div className='homepageBtnsWrapper'>
+			<Link to={`/films`}>
 				<div className="homepageBtns homepageBtnsOne">
-					<Link to={`/films`}>
-						<h2>Films</h2>
-					</Link>
+					<h2>Films</h2>
 				</div>
-			
+			</Link>
+
+			<Link to={`/people`}>
 				<div className="homepageBtns homepageBtnsTwo">
-					<Link to={`/people`}>
-						<h2>People</h2>
-					</Link>
+					<h2>People</h2>
 				</div>
+			</Link>
 		</div>
-		
 	)
 }
 
