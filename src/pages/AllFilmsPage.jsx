@@ -12,6 +12,7 @@ function AllFilmsPage() {
     const [error, setError] = useState(null)
     const [isError, setIsError] = useState(false)
 	const [page, setPage] = useState(1)   
+    const totalPage = 1
 
 
     // get films from api when component i mounted 
@@ -39,23 +40,21 @@ function AllFilmsPage() {
  	    }
 
         getFilms(page)
-        
-    }, [page]) 
 
+    }, [page]) 
+console.log(page)
 
 	return (
 		<div className='allFilms'>
 			{isLoading && (<LoadingSpinner />)}
 			{isError && (<p><strong>ERROR!</strong> Sorry, an error has occured: {error.message}</p>)}
 
-            
-            {films && !isLoading && (
+            {films && films.results && !isLoading && (
             	<AllFilmsList films={films}/>
 			)}  
 			
 			{page && (
-                <Container className='pageBtns'>
-                    <div className="previouBtn">
+                <Container className="pageBtns">
                         <Button
                             variant="dark"
                             onClick={() => setPage(value => value -1)}
@@ -64,9 +63,11 @@ function AllFilmsPage() {
                         >
                             Previous
                         </Button>
-                    </div>
+
+                        <div className='pageNumber'>
+                            <p>{page} / {totalPage}</p>
+                        </div>
        
-                    <div className="nextBtn">
                         <Button
                             variant="dark"
                             onClick={() => setPage(value => value +1)}
@@ -75,7 +76,6 @@ function AllFilmsPage() {
                         >
                             Next
                         </Button>
-                    </div>
                 </Container>
             )}
 		</div>

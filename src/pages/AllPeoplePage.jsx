@@ -8,17 +8,17 @@ import { Button, Container } from 'react-bootstrap'
 
 function AllPeoplePage() {
     const [people, setPeople] = useState([])
-    const [page, setPage] = useState(1)   
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
     const [isError, setIsError] = useState(false)
+    const [page, setPage] = useState(1)   
+    const totalPage = 9
 
 
     // get people from api when component i mounted 
     useEffect(() => {
-        setIsLoading(true)
-
- 	    const getPeople = async () => {
+        const getPeople = async () => {
+            setIsLoading(true)
 
             try {
                 // get people from StarWarsAPI
@@ -37,7 +37,7 @@ function AllPeoplePage() {
             } finally {
                 setIsLoading(false)
             }	
- 	    }
+        }
 
         getPeople(page)
         
@@ -50,13 +50,12 @@ function AllPeoplePage() {
             {isLoading && (<LoadingSpinner />)}
 			{isError && (<p><strong>ERROR!</strong> Sorry, an error has occured: {error.message}</p>)}
 
-            {people && people.results &&!isLoading && (
+            {people && people.results && !isLoading && (
                 <AllPeopleList people={people}/>
             )}  
 
             {page && (
-                <Container className='pageBtns'>
-                    <div className="previouBtn">
+                <Container className="pageBtns">
                         <Button
                             variant="dark"
                             onClick={() => setPage(value => value -1)}
@@ -65,9 +64,11 @@ function AllPeoplePage() {
                         >
                             Previous
                         </Button>
-                    </div>
+
+                        <div className='pageNumber'>
+                            <p>{page} / {totalPage}</p>
+                        </div>
        
-                    <div className="nextBtn">
                         <Button
                             variant="dark"
                             onClick={() => setPage(value => value +1)}
@@ -76,7 +77,6 @@ function AllPeoplePage() {
                         >
                             Next
                         </Button>
-                    </div>
                 </Container>
             )}
         </div>  
