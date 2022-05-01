@@ -1,10 +1,7 @@
-import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Container, Card, ListGroup, Button } from "react-bootstrap"
+import { Button, Card, Container, ListGroup } from "react-bootstrap"
 import { getIdFromUrl} from "../helpers"
 
-// styles
-import '../App.css'
 
 
 function SinglePerson({ person }) {
@@ -15,19 +12,18 @@ function SinglePerson({ person }) {
             <Container className="cardsContainer">
                 {/* show info about character */}
                 <Card style={{ width: '50rem'}}  >
-                    <ListGroup variant="flush">
+                    <Card variant="flush">
                         <Card.Header>{person.name}</Card.Header>
-                        <ListGroup.Item>Attributes</ListGroup.Item>     
-                        <ListGroup.Item><strong>Gender </strong>{person.gender}</ListGroup.Item>
-                        <ListGroup.Item><strong>Birth Year </strong>{person.birth_year}</ListGroup.Item>
-                        <ListGroup.Item><strong>Height </strong>{person.height}</ListGroup.Item>
-                        <ListGroup.Item><strong>Mass </strong>{person.mass}</ListGroup.Item>
-                        <ListGroup.Item><strong>Hair Color </strong>{person.hair_color}</ListGroup.Item>
-                        <ListGroup.Item><strong>Skin Color </strong>{person.skin_color}</ListGroup.Item>
-                        <ListGroup.Item><strong>Eye Color </strong>{person.eye_color}</ListGroup.Item>     
+                        <Card.Body>Attributes:</Card.Body>     
+                        <Card.Body><strong>Gender </strong>{person.gender}</Card.Body>
+                        <Card.Body><strong>Birth Year </strong>{person.birth_year}</Card.Body>
+                        <Card.Body><strong>Height </strong>{person.height}</Card.Body>
+                        <Card.Body><strong>Mass </strong>{person.mass}</Card.Body>
+                        <Card.Body><strong>Hair Color </strong>{person.hair_color}</Card.Body>
+                        <Card.Body><strong>Skin Color </strong>{person.skin_color}</Card.Body>
+                        <Card.Body><strong>Eye Color </strong>{person.eye_color}</Card.Body>     
                                        
-                        <ListGroup.Item><strong>Films </strong></ListGroup.Item>
-
+                        <Card.Body><strong>Films: </strong>
                             {/* Links to films */}
                             {person.films && (
                                 person.films.map((person, id) => {
@@ -43,7 +39,8 @@ function SinglePerson({ person }) {
                                     )
                                 })
                             )} 
-                        </ListGroup>
+                        </Card.Body>
+                    </Card>
 
                     <div className="m-3">
                         <Button variant="dark" onClick={() => navigate(-1)}>≪ Back</Button>   

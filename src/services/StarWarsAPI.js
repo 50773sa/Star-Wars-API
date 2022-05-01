@@ -42,11 +42,11 @@ const getSingleFilm = async (id) => {
     return res.data
 }
 
+
 // eslint-disable-next-line 
 export default {
     getAllFilms,
     getSingleFilm,
     getAllPeople,
     getSinglePerson,
-
 }
