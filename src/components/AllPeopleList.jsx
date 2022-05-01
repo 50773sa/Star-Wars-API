@@ -19,7 +19,14 @@ function AllPeopleList({ people }) {
                                 <ListGroup.Item><strong>In </strong>{person.films.length} films</ListGroup.Item>
 
                                 <div className="m-3">
-                                    <Button variant="dark" size="sm" as={Link} to={`/people/${id+1}`}>Read More</Button>   
+                                    <Button 
+                                        variant="dark" 
+                                        size="sm" 
+                                        as={Link} 
+                                        to={`/people/${id+1}`}
+                                        >
+                                            Read More
+                                    </Button>   
                                 </div>
                             </ListGroup>                            
                         </Card> 

@@ -10,7 +10,7 @@ function AllFilmsList({ films }) {
             <h2>Films</h2>
 
             <Container className="cardsContainer">
-                {films.map((film, id) => {
+                {films && films.results.map((film, id) => {
                     return (
                         <Card style={{ width: '18rem' }} key={id} value={film}>
                             <ListGroup variant="flush">
@@ -20,7 +20,12 @@ function AllFilmsList({ films }) {
                                 <ListGroup.Item>{film.characters.length}<strong> Characters</strong></ListGroup.Item>
 
                                 <div className="m-3">
-                                    <Button variant="dark" size="sm" as={Link} to={`/films/${id+1}`}>
+                                    <Button 
+                                        variant="dark" 
+                                        size="sm" 
+                                        as={Link} 
+                                        to={`/films/${id+1}`}
+                                        >
                                         Read More
                                     </Button>   
                                 </div>

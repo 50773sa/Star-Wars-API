@@ -15,6 +15,7 @@ import './App.css';
 
 
 function App() {
+
   return (
     <div id="App">
 		<Navigation />
@@ -26,7 +27,7 @@ function App() {
 				<Route path="/films" element={<AllFilmsPage />} />
 				<Route path="/films/:id" element={<SingleFilmPage />} />
                 <Route path="/people" element={<AllPeoplePage />} />
-                <Route path="/people/:id" element={<SinglePersonPage />} />				
+                <Route path="/people/:id" element={<SinglePersonPage />} />		
                 <Route path="*" element={<PageNotFound />} />				
 			</Routes>
 			</div>
