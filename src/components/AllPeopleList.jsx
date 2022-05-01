@@ -1,21 +1,15 @@
-import { Container } from "react-bootstrap"
-import { ListGroup, Card, Button } from "react-bootstrap"
+import { ListGroup, Card,Container, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
 
-import Pagination from "./Pagination"
-
-import '../App.css'
 
 function AllPeopleList({ people }) {
-    const navigate = useNavigate()
         
     return (
         <>
             <h2>People</h2>
 
-            <Container className="cardsContainer"> 
-                {people.map((person, id) => {
+            <Container className="cardsContainer" > 
+                {people && people.results.map((person, id) => {
                     return (
                         <Card style={{ width: '18rem' }} key={id} value={person} className="row-3 col-3" >
                             <ListGroup variant="flush">
@@ -32,20 +26,7 @@ function AllPeopleList({ people }) {
                     )
                 })}
             </Container> 
-
-            {/* <div className="d-flex justify-content-between align-items-center mt-4">
-                        <div className="col-3">
-                            <Button variant="warning" size="sm" onClick={() => navigate(-1)} disabled={!people.length}>Previos Page</Button>   
-                         </div>
-
-                        <div>
-                            <p>Page {1}/{1}</p>
-                        </div>
-
-                        <div className="col-3">
-                            <Button variant="warning" size="sm" onClick={() => navigate(+1)} disabled={!people.length} >Next Page</Button>   
-                        </div>
-                    </div> */}
+            
         </>
     )
 }
